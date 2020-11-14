@@ -1,16 +1,16 @@
 import ContentfulClient from "./client";
-import mapRecipe from "./utils/map-recipe";
+import mapWeekPlanning from "./utils/map-week-planning";
 
-export default async function getRecipes () {
+export default async function getWeekPlanningItems () {
   if (!ContentfulClient) return null
   const { items } = await ContentfulClient.getEntries({
-    content_type: 'recipe'
+    content_type: 'weekPlanning'
   })
 
   return items.reduce((items, item: any) => {
     return {
       ...items,
-      [item.sys.id]: mapRecipe(item)
+      [item.fields.weekNumber]: mapWeekPlanning(item)
     }
   }, {})
 }

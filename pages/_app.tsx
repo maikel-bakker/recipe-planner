@@ -1,6 +1,13 @@
+import React from 'react'
 import '../styles/globals.css'
 
-function MyApp({ Component, pageProps }) {
+interface Props {
+  Component: React.JSXElementConstructor<any>;
+  pageProps: any;
+}
+
+function MyApp(props: Props) {
+  const { Component, pageProps } = props
   return <Component {...pageProps} />
 }
 
