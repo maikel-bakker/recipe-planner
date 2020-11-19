@@ -2,6 +2,7 @@ import Axios from 'axios'
 import cheerio from "cheerio";
 import {RecipeInput} from "../../domains/recipes/models";
 import { decode } from 'he'
+import slugify from 'slugify'
 
 function getSteps (recipeSnippet: any) {
   const $ = cheerio.load(recipeSnippet.recipeInstructions)
@@ -27,10 +28,9 @@ export default async function getRecipe (url: string) : Promise<RecipeInput> {
 
   const steps = getSteps(recipeSnippet)
 
-  console.log(steps)
-
   return {
     title: recipeSnippet.name,
+    slug: slugify(recipeSnippet.name, { lower: true }),
     link: url,
     ingredients: recipeSnippet.recipeIngredient,
     steps: steps
