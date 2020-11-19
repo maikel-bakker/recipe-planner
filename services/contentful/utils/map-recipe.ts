@@ -10,6 +10,7 @@ export default function mapRecipe (item: any) {
     id: item.sys.id,
     title: item.fields.title,
     link: item.fields.link,
+    slug: item.fields.slug,
     ingredients: item.fields.ingredients && mapList(item.fields.ingredients, 'unordered-list'),
     steps: item.fields.steps && mapList(item.fields.steps, 'ordered-list'),
     rawItem: item

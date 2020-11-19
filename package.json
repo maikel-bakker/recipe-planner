@@ -28,6 +28,7 @@
     "react": "16.14.0",
     "react-combine-reducers": "^1.0.4",
     "react-dom": "16.14.0",
+    "slugify": "^1.4.6",
     "yup": "^0.29.3"
   },
   "devDependencies": {
