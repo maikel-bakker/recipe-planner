@@ -1,12 +1,12 @@
 const path = require('path')
+require('dotenv').config({ path: path.resolve(__dirname, '../.env.local') })
 const fs = require('fs')
-const dotenv = require('dotenv').config({ path: path.resolve(__dirname, '../.env.local') })
 const { runMigration } = require('contentful-migration/built/bin/cli')
 
 const options = {
-  spaceId: dotenv.parsed.CONTENTFUL_SPACE_ID,
-  accessToken: dotenv.parsed.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN,
-  environmentId: dotenv.parsed.CONTENTFUL_MIGRATION_ENVIRONMENT,
+  spaceId: process.env.CONTENTFUL_SPACE_ID,
+  accessToken: process.env.CONTENTFUL_MANAGEMENT_ACCESS_TOKEN,
+  environmentId: process.env.CONTENTFUL_MIGRATION_ENVIRONMENT,
   yes: true
 }
 
